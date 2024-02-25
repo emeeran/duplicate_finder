@@ -1,3 +1,4 @@
+import os
 import csv
 
 # Define the CSV file path
@@ -12,13 +13,22 @@ with open(csv_file, "r") as csvfile:
         hash, file_paths = row
         data.append({"hash": hash, "file_paths": file_paths.split(", ")})
 
-# Access and process data
+# Identify and confirm deletion of duplicates
 if data:
-    print("Duplicate file information:")
+    print("**Duplicates Found:**")
     for item in data:
         print(f"- Hash: {item['hash']}")
         print(f"  - File Paths:")
-        for path in item["file_paths"]:
-            print(f"    - {path}")
+        for path in item["file_paths"][1:]:  # Print only non-first paths
+            print(f"    - {path} (Duplicate)")
+            confirmation = input(f"Do you want to delete {path}? (y/n): ")
+            if confirmation.lower() == "y":
+                try:
+                    os.remove(path)
+                    print(f"    - {path} deleted successfully.")
+                except OSError as e:
+                    print(f"    - Error deleting {path}: {e}")
 else:
-    print("No data found in the CSV file.")
+    print("No duplicate files found.")
+
+print("**Deletion Process Completed.**")

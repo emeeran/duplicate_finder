@@ -38,7 +38,7 @@ def find_duplicates(directory):
 
 
 # Example usage:
-directory_to_scan = "C:\SYNOLOGY\CODING\Chat Exports"
+directory_to_scan = "C:\SYNOLOGY\CODING\Chat Exports\temp"
 duplicates = find_duplicates(directory_to_scan)
 
 if duplicates:
