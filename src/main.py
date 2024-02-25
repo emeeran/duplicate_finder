@@ -1,5 +1,6 @@
 import os
 import hashlib
+import csv
 
 
 def find_duplicates(directory):
@@ -38,14 +39,16 @@ def find_duplicates(directory):
 
 # Example usage:
 directory_to_scan = "C:\SYNOLOGY\CODING\Chat Exports"
-
 duplicates = find_duplicates(directory_to_scan)
 
 if duplicates:
-    print("Duplicate files found:")
-    for file_hash, file_paths in duplicates.items():
-        print(f"- Hash: {file_hash}")
-        for file_path in file_paths:
-            print(f"  - {file_path}")
+    # Export duplicates to CSV file
+    csv_file = os.path.join("./data", "duplicates.csv")
+    with open(csv_file, "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Hash", "File Paths"])
+        for file_hash, file_paths in duplicates.items():
+            writer.writerow([file_hash, ", ".join(file_paths)])
+    print(f"Duplicate files list exported to: {csv_file}")
 else:
     print("No duplicate files found.")
