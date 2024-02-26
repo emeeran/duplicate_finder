@@ -32,7 +32,9 @@ Follow these steps to use the script:
    Execute the Python script by running the following command:
 
    ```bash
-   python duplicate_remover.py
+   python dupe_deletor_individual.py # This script ask your permission for deleting every duplicate
+   python dupe_deletor_one_go.py # This script prints all duplicates, if you allow, deletes all in one go
+   python dupe_mover.py # This script moves all duplicates to a folder
    ```
 
 4. **Enter the Directory Path**
@@ -44,17 +46,13 @@ Follow these steps to use the script:
    Enter the directory to search for duplicates: /path/to/your/directory
    ```
 
-5. **Review Duplicate Files**
-
-   The script will display a list of duplicate files found within the specified directory and its subdirectories.
-
 6. **Move Duplicates to a Separate Directory**
 
    The script will create a directory named "duplicates_found" within the specified directory (if it doesn't already exist) and move the duplicate files into that directory, leaving the original files intact.
 
 7. **Review Results**
 
-   Once the process is complete, you can review the duplicate files moved to the "duplicates_found" directory.
+- Once the process is complete, you can review the duplicate files moved to the "duplicates_found" directory.
 
 ## Additional Notes
 
@@ -62,6 +60,3 @@ Follow these steps to use the script:
 - Please ensure you have sufficient permissions to read, write, and move files within the specified directory.
 - It's recommended to review the duplicate files before taking any further action.
 
----
-
-Feel free to customize this README file based on your specific project requirements and preferences.
